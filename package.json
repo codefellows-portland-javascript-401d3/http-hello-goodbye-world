@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/deeheber/http-hello-goodbye-world/issues"
   },
-  "homepage": "https://github.com/deeheber/http-hello-goodbye-world#readme"
+  "homepage": "https://github.com/deeheber/http-hello-goodbye-world#readme",
+  "dependencies": {
+    "cowsay": "^1.1.8"
+  }
 }

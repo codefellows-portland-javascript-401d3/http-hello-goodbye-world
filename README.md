@@ -7,5 +7,5 @@ An http server that responds with either "hello world" or "goodbye world".
 - Navigate to `localhost:8000` in your browser
 - Available paths
   - / prints "Hello World"
-  - /goodbye prints "Goodbye World"
+  - /bye prints "Goodbye World"
   - ever other URL will print "Page not found!"

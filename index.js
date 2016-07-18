@@ -1,18 +1,25 @@
 const http = require('http');
+const cowsay = require('cowsay');
 
-var server = http.createServer((request, response)=>{
+const server = http.createServer((request, response)=>{
 
   if(request.url === '/'){
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write('Hello world!');
+
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write(cowsay.say({text : 'Hello world!'}));
     response.end();
-  } else if(request.url === '/goodbye'){
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write('Goodbye world!');
+
+  } else if(request.url === '/bye'){
+
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write(cowsay.say({text : 'Goodbye world!'}));
     response.end();
+
   } else {
-    response.writeHead(404, {'Content-Type': 'text/html'});
-    response.write('Page not found!');
+
+    response.writeHead(404, {'Content-Type': 'text/plain'});
+    response.write('Page not found!\n\n\n');
+    response.write(`${request.url} is not a valid page.`);
     response.end();
   }
 
