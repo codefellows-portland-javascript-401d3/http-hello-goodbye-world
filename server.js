@@ -1,4 +1,5 @@
 const http = require('http');
+const url = require('url');
 
 const handle = {};
 handle['/alpha'] = alpha;
@@ -21,13 +22,13 @@ function route (handle, pathname, response) {
   }
 }
 
-function alpha () {
+function alpha (response) {
   response.writeHead(200, {'Content-Type': 'text/plain'});
   response.write('Alpha successfully called!');
   response.end();
 }
 
-function beta () {
+function beta (response) {
   response.writeHead(200, {'Content-Type': 'text/plain'});
   response.write('Beta successfully called!');
   response.end();
