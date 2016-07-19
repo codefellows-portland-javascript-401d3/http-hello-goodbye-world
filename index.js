@@ -1,14 +1,15 @@
 const server = require('./server');
 const route = require('./route');
+const request = require('./request');
 
 
 
 
 //handles routes for page
 const handle = {};
-handle['/'] = server.start;
-handle['/home'] = server.home;
-handle['/nextPage'] = server.nextPage;
+handle['/'] = request.home;
+handle['/home'] = request.home;
+handle['/nextPage'] = request.nextPage;
 
 
 server.startServer(route.route, handle);
