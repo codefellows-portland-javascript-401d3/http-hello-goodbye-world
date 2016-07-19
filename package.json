@@ -1,0 +1,25 @@
+{
+  "name": "http-hello-goodbye-world",
+  "version": "1.0.0",
+  "description": "An http server that responds with either \"hello world\" or \"goodbye world\".",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deeheber/http-hello-goodbye-world.git"
+  },
+  "author": "Danielle Heberling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deeheber/http-hello-goodbye-world/issues"
+  },
+  "homepage": "https://github.com/deeheber/http-hello-goodbye-world#readme",
+  "dependencies": {
+    "cowsay": "^1.1.8"
+  }
+}
