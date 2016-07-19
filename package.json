@@ -4,7 +4,8 @@
   "description": "",
   "main": "http.js",
   "scripts": {
-    "test": "mocha"
+    "pretest": "npm run lint",
+    "lint": "eslint *.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/afoldoe/http-hello-goodbye-world#readme",
   "dependencies": {
     "starwars": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "mocha": "^2.5.3"
   }
 }
