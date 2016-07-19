@@ -13,6 +13,7 @@ Make sure you are returning status code and content type.
 	* Url (path)
 	* Query parameters
 	* Http Verb
+	
 (all three of above options need to be used at least _once_)
 	
 * Add an invalid response that yields a `400` status code.
