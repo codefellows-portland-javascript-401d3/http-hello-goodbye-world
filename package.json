@@ -1,0 +1,22 @@
+{
+  "name": "http-hello-goodbye-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afoldoe/http-hello-goodbye-world.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afoldoe/http-hello-goodbye-world/issues"
+  },
+  "homepage": "https://github.com/afoldoe/http-hello-goodbye-world#readme",
+  "dependencies": {
+    "starwars": "^1.0.0"
+  }
+}
