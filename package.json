@@ -1,0 +1,25 @@
+{
+  "name": "http-hello-goodbye-world",
+  "version": "1.0.0",
+  "description": "simple http server",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronbini/http-hello-goodbye-world.git"
+  },
+  "author": "Aaron Bini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronbini/http-hello-goodbye-world/issues"
+  },
+  "homepage": "https://github.com/aaronbini/http-hello-goodbye-world#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "eslint": "^3.1.1"
+  }
+}
