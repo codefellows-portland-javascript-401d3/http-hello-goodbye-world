@@ -7,3 +7,8 @@ to the page.
 
 
 I used an npm module named starwars to genereate the random quote.
+USAGE npm install starwars
+
+
+
+
