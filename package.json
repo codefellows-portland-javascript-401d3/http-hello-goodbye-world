@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/afoldoe/http-hello-goodbye-world#readme",
   "dependencies": {
+    "request": "^2.73.0",
     "starwars": "^1.0.0"
   },
   "devDependencies": {
