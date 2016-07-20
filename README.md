@@ -7,6 +7,8 @@ to the page.
 
 /?name=luke tells the handler to show different response than the one for / and /home
 
+/?format=jason tells the handler to show my treehouse (teamtreehouse.com) user profile in json format. 
+
 /image get a .jpeg image of Luke Skywalker from the internet and downloads into a new file. Once complete the image is written to the page. 
 
 /path is an option path that display RUN TO DAGOBAH
