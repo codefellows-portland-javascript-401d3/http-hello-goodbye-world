@@ -1,22 +1,26 @@
 const http = require('http');
 const cowsay = require('cowsay');
 const fs = require('fs');
+const url = require('url');
 
 const server = http.createServer((request, response)=>{
 
-  if(request.url === '/'){
+  const requestPath = url.parse(request.url, true).path;
+  const requestQuery = url.parse(request.url, true).query;
+
+  if(requestPath === '/'){
 
     response.writeHead(200, {'Content-Type': 'text/plain'});
     response.write(cowsay.say({text : 'Hello world!'}));
     response.end();
 
-  } else if(request.url === '/bye'){
+  } else if(requestPath === '/bye'){
 
     response.writeHead(200, {'Content-Type': 'text/plain'});
     response.write(cowsay.say({text : 'Goodbye world!'}));
     response.end();
 
-  } else if(request.url === '/random'){
+  } else if(requestPath === '/random'){
 
     let random = Math.floor(Math.random()*5000);
     let message = `Here is a random number for you: ${random}`;
@@ -25,10 +29,15 @@ const server = http.createServer((request, response)=>{
     response.write(cowsay.say({text : message}));
     response.end();
 
-  } else if(request.url === '/form'){
+  } else if(requestPath === '/form'){
 
     response.writeHead(200, {'Content-Type': 'text/html'});
     fs.createReadStream('./templates/form.html').pipe(response);
+
+  } else if(requestPath === '/query'){
+
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    fs.createReadStream('./templates/query.html').pipe(response);
 
   } else if(request.method === 'POST'){
 
@@ -39,7 +48,7 @@ const server = http.createServer((request, response)=>{
 
     response.writeHead(404, {'Content-Type': 'text/plain'});
     response.write('Page not found!\n\n\n');
-    response.write(`${request.url} is not a valid page.`);
+    response.write(`${requestPath} is not a valid page.`);
     response.end();
   }
 
