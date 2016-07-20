@@ -6,7 +6,6 @@ const url = require('url');
 const server = http.createServer((request, response)=>{
 
   const requestPath = url.parse(request.url, true).path;
-  const requestQuery = url.parse(request.url, true).query;
 
   if(requestPath === '/'){
 
@@ -34,11 +33,6 @@ const server = http.createServer((request, response)=>{
     response.writeHead(200, {'Content-Type': 'text/html'});
     fs.createReadStream('./templates/form.html').pipe(response);
 
-  } else if(requestPath === '/query'){
-
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream('./templates/query.html').pipe(response);
-
   } else if(request.method === 'POST'){
 
     response.writeHead(200, {'Content-Type': 'text/html'});
@@ -46,7 +40,7 @@ const server = http.createServer((request, response)=>{
 
   } else {
 
-    response.writeHead(404, {'Content-Type': 'text/plain'});
+    response.writeHead(400, {'Content-Type': 'text/plain'});
     response.write('Page not found!\n\n\n');
     response.write(`${requestPath} is not a valid page.`);
     response.end();
