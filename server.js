@@ -3,17 +3,17 @@ const url = require('url');
 
 const handle = {};
 handle['/alpha'] = alpha;
-handle['/beta']  = beta;
+handle['/beta'] = beta;
 
 function onRequest (request, response) {
   var pathname = url.parse(request.url).pathname;
 
-  route(handle, pathname, response)
+  route(handle, pathname, response);
 }
 
 function route (handle, pathname, response) {
   if (typeof handle[pathname] === 'function') {
-  handle[pathname](response);
+    handle[pathname](response);
   } else {
     console.log('No request handler found for ' + pathname);
     response.writeHead(404, {'Content-Type': 'text/plain'});
