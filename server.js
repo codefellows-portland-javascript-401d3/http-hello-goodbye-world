@@ -35,6 +35,12 @@ module.exports = http.createServer((request, response)=>{
 
   } else if(request.method === 'POST'){
 
+    request.pipe(fs.createWriteStream('post.txt'));
+    fs.createReadStream('./templates/thanks.html').pipe(response);
+    response.writeHead(302, {location: '/thanks'});
+
+  } else if(requestPath === '/thanks'){
+
     response.writeHead(200, {'Content-Type': 'text/html'});
     fs.createReadStream('./templates/thanks.html').pipe(response);
 

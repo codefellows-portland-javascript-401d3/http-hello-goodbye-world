@@ -11,5 +11,5 @@ An http server that responds with either "hello world" or "goodbye world".
   - /bye prints "Goodbye World"
   - /random prints a random number
   - /form takes you to a form
-  - hitting the submit button on the /form page will take you to /thanks
+  - hitting the submit button on the /form page will take you to /thanks and send the content in the input to post.txt
   - ever other URL will send out the error page
