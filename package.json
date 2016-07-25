@@ -1,0 +1,26 @@
+{
+  "name": "http-hello-goodbye-world",
+  "version": "1.0.0",
+  "description": "A simple HTTP server.",
+  "main": "server.js",
+  "scripts": {
+    "watch": "mocha -w",
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlesEmrich/http-hello-goodbye-world.git"
+  },
+  "author": "CharlesEmrich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CharlesEmrich/http-hello-goodbye-world/issues"
+  },
+  "homepage": "https://github.com/CharlesEmrich/http-hello-goodbye-world#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^2.5.3"
+  }
+}
