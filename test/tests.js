@@ -1,21 +1,13 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const url = require('url');
-const http = require('http');
 const assert = require('assert');
 
-server = require('../server');
+const server = require('../server');
 
 chai.use(chaiHttp);
 
-const myServer = http.createServer(server.onRequest);
-
+const request = chai.request(server);
 describe('HTTP server', () => {
-
-  before((done) => {
-    myServer.listen(8080);
-    done();
-  });
 
   // it('test URL response', (done) => {
   //   chai.request('http://localhost:8888')
@@ -28,9 +20,9 @@ describe('HTTP server', () => {
   //   });
   // });
 
-  it('fails, on bad requests', function(done) {
-    chai.request('http://localhost:8080')
-  .get('/')
+  it('fails on bad requests', function(done) {
+    request
+  .get('/nonsense')
   .end(function(err, res) {
     console.log(res);
     // assert.ok(res.status === 404);
@@ -52,10 +44,5 @@ describe('HTTP server', () => {
     .end((err,res) => {
       assert.ok(err);
     });
-  });
-
-  after((done) => {
-    myServer.close();
-    done();
   });
 });

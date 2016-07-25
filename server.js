@@ -1,39 +1,39 @@
 const http = require('http');
 const url = require('url');
+const querystring = require('querystring');
 
-const handle = {};
-handle['/alpha'] = alpha;
-handle['/beta'] = beta;
+function onRequest (req, res) {
+  const params = url.parse(req.url);
+  const query = querystring.parse(params.query);
 
-function onRequest (request, response) {
-  var pathname = url.parse(request.url).pathname;
+  if(req.url === '/') {
+    res.statusCode = 200;
+    res.write('Path "/" Loaded!');
+    res.end();
+  } else
 
-  route(handle, pathname, response);
-}
+  if (req.url === '/start') {
+    res.statusCode = 200;
+    res.write('Path "/start" Loaded!');
+    res.end();
+  } else
 
-function route (handle, pathname, response) {
-  if (typeof handle[pathname] === 'function') {
-    handle[pathname](response);
+  if(req.url.startsWith('/count')) {
+    res.statusCode = 200;
+    if (query.num) res.write(query.num + ' is the queried number.');
+    res.end();
+  } else
+
+  if(req.url === '/postest' && req.method === 'POST') {
+    res.statusCode = 200;
+    res.write('Path "/postest" Loaded! Mode: POST');
+    res.end();
   } else {
-    console.log('No request handler found for ' + pathname);
-    response.writeHead(404, {'Content-Type': 'text/plain'});
-    response.write('404 Not found');
-    response.end();
+    res.statusCode = 400;
+    res.write('Bad request.');
+    res.end();
+    console.log('Bad request:' + req.url);
   }
 }
 
-function alpha (response) {
-  response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.write('Alpha successfully called!');
-  response.end();
-}
-
-function beta (response) {
-  response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.write('Beta successfully called!');
-  response.end();
-}
-
-// http.createServer(onRequest).listen(8080);
-
-module.exports = onRequest;
+module.exports = http.createServer(onRequest);
