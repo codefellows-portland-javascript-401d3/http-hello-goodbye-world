@@ -9,40 +9,50 @@ chai.use(chaiHttp);
 const request = chai.request(server);
 describe('HTTP server', () => {
 
-  // it('test URL response', (done) => {
-  //   chai.request('http://localhost:8888')
-  //   .get('/alpha')
-  //   .end((err, res) => {
-  //     // if (err) done(err);
-  //     // assert.ok(res.status === 400);
-  //     console.log(res);
-  //     done();
-  //   });
-  // });
-
   it('fails on bad requests', function(done) {
     request
   .get('/nonsense')
   .end(function(err, res) {
-    console.log(res);
-    // assert.ok(res.status === 404);
+    assert.ok(err);
+    assert.equal(res.statusCode, 400);
     done();
   });
-  }) ;
+  });
 
   it('test query param response', () => {
-
+    request
+    .get('/count?num=5')
+    .end((err, res) => {
+      if (err) return done(err);
+      assert.equal(res.statusCode, 200);
+      assert.equal(res.header['content-type'], 'text/plain');
+      assert.equal(res.text, '5 is the queried number.');
+      done();
+    });
   });
 
-  it('test HTTP verb response', () => {
-
+  it('test HTTP verb response: POST', () => {
+    request
+    .get('/postest')
+    .end((err, res) => {
+      if (err) return done(err);
+      assert.equal(res.statusCode, 200);
+      assert.equal(res.method, 'POST');
+      assert.equal(res.header['content-type'], 'text/plain');
+      assert.equal(res.text, 'Path "/postest" Loaded! Mode: POST');
+      done();
+    });
   });
 
-  it('test 400 response', () => {
-    chai.request('http://localhost:8888')
-    .get('/nonsense')
-    .end((err,res) => {
-      assert.ok(err);
+  it('test "/" route', done => {
+    request
+    .get('/')
+    .end((err, res) => {
+      if (err) return done(err);
+      assert.equal(res.statusCode, 200);
+      assert.equal(res.header['content-type'], 'text/plain');
+      assert.equal(res.text, 'Path "/" Loaded!');
+      done();
     });
   });
 });

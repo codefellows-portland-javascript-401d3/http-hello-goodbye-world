@@ -6,6 +6,8 @@ function onRequest (req, res) {
   const params = url.parse(req.url);
   const query = querystring.parse(params.query);
 
+  res.setHeader('Content-Type', 'text/plain');
+
   if(req.url === '/') {
     res.statusCode = 200;
     res.write('Path "/" Loaded!');
